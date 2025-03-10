@@ -1,0 +1,54 @@
+{
+  "name": "codeball-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "yarn baller:build && yarn approver:build && yarn status:build && yarn labeler:build && yarn suggester:build",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "baller:build": "ncc build src/baller/main.ts --out dist/baller --source-map --license licenses.txt",
+    "approver:build": "ncc build src/approver/main.ts --out dist/approver --source-map --license licenses.txt",
+    "status:build": "ncc build src/status/main.ts --out dist/status --source-map --license licenses.txt",
+    "labeler:build": "ncc build src/labeler/main.ts --out dist/labeler --source-map --license licenses.txt",
+    "suggester:build": "ncc build src/suggester/main.ts --out dist/suggester --source-map --license licenses.txt",
+    "test": "jest",
+    "all": "yarn format && yarn lint && yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sturdy-dev/codeball-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sturdy-dev/codeball-action/issues"
+  },
+  "homepage": "https://github.com/sturdy-dev/codeball-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "@octokit/core": "^4.1.0",
+    "@octokit/plugin-paginate-rest": "^5.0.1",
+    "@octokit/plugin-rest-endpoint-methods": "^6.7.0",
+    "https-proxy-agent": "^5.0.1",
+    "node-fetch": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.28.0",
+    "eslint-plugin-github": "^4.4.1",
+    "eslint-plugin-jest": "^27.1.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^28.1.0",
+    "js-yaml": "^4.1.0",
+    "prettier": "^2.8.0",
+    "ts-jest": "^28.0.8",
+    "typescript": "^4.9.3"
+  }
+}
